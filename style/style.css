@@ -1,4 +1,10 @@
 /* ===================================================
+   PORTFOLIO STYLESHEET - ABDERRAHMANE LAOURF
+   Author: Abderrahmane Laourf
+   Enhanced with advanced animations and modern effects.
+=================================================== */
+
+/* ===================================================
    GOOGLE FONTS & BASE STYLES - REFINED
 =================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Clicker+Script&display=swap');
@@ -173,30 +179,69 @@ ul { list-style: none; }
 .about .buttons { margin-top: 30px; }
 .about .buttons .btn { margin-right: 15px; margin-top: 10px; }
 
-/* === NEW: DYNAMIC & ANIMATED PROGRESS BAR === */
-.about .skill-item { flex: 0 0 100%; max-width: 100%; margin-bottom: 30px; }
-.about .skill-item h5 { line-height: 40px; font-weight: 600; font-size: 16px; color: var(--text-black-900); text-transform: capitalize; }
-.about .skill-item .progress { background-color: var(--bg-black-50); height: 8px; border-radius: 4px; width: 100%; position: relative; overflow: visible; }
-.about .skill-item .progress-in {
-    position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px;
-    background: linear-gradient(90deg, var(--skin-color) 0%, hsl(from var(--skin-color) h s l / 0.8) 100%);
-    width: 0; /* Initial state for animation */
-    transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+/* === SKILLS : STYLE AVANCÉ ET INTERACTIF - MODIFIED === */
+.about .skill-item {
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.about .skill-item:last-child {
+  margin-bottom: 0;
+}
+.about .skill-item .skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.about .skill-item h5 {
+  line-height: 1.5;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-black-900);
+  text-transform: capitalize;
+  margin: 0;
 }
 .about .skill-item .skill-percent {
-    position: absolute; right: 0; top: -40px; font-weight: 500;
-    color: var(--text-black-900); line-height: 40px;
-    opacity: 0; /* Initial state for animation */
-    transform: translateY(10px);
-    transition: opacity 0.5s ease 0.8s, transform 0.5s ease 0.8s;
+  font-weight: 500;
+  color: var(--text-black-700);
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 0.5s ease 1s;
 }
-/* This rule triggers the animation when the section is active */
-.section.active .about .skill-item .progress-in {
-    width: var(--progress-width); /* Animates to the width set in HTML style attribute */
+.about .skill-item .progress {
+  /* This is the gray background for the "rest of the line" */
+  background-color: var(--bg-black-50);
+  border: 1px solid var(--bg-black-100);
+  height: 8px;
+  border-radius: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
-.section.active .about .skill-item .skill-percent {
-    opacity: 1;
-    transform: translateY(0);
+body.dark .about .skill-item .progress {
+  border-color: var(--bg-black-50);
+}
+.about .skill-item .progress-in {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 4px;
+  background-color: var(--skin-color);
+  background-image: repeating-linear-gradient(
+    45deg,
+    hsla(0, 0%, 100%, 0.15),
+    hsla(0, 0%, 100%, 0.15) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  background-size: 40px 40px;
+  box-shadow: 0 0 5px hsla(from var(--skin-color) h s l / 0.5), 
+              0 0 15px hsla(from var(--skin-color) h s l / 0.3);
+  width: 0;
+  animation: animated-stripes 2s linear infinite;
+  transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* --- ENHANCED TIMELINE --- */
@@ -235,19 +280,17 @@ ul { list-style: none; }
     transition: transform 0.5s ease;
 }
 .portfolio .portfolio-item-inner:hover .portfolio-img img { transform: scale(1.08); }
-
-/* === NEW: INTERACTIVE PORTFOLIO OVERLAY === */
 .portfolio .portfolio-item-inner::before,
 .portfolio .portfolio-item-inner::after {
     position: absolute; left: 0; transition: var(--transition-main);
 }
-.portfolio .portfolio-item-inner::after { /* The color overlay */
+.portfolio .portfolio-item-inner::after {
     content: ''; top: 0; width: 100%; height: 100%;
     background: hsla(from var(--skin-color) h s l / 0.85);
     opacity: 0;
 }
 .portfolio .portfolio-item-inner:hover::after { opacity: 1; }
-.portfolio .portfolio-item-inner::before { /* The title and icon */
+.portfolio .portfolio-item-inner::before {
     content: attr(data-title) '\A\f06e';
     font-family: 'Poppins', 'Font Awesome 6 Free'; font-weight: 600;
     top: 50%; width: 100%; text-align: center;
@@ -265,7 +308,8 @@ ul { list-style: none; }
 .contact-sub-title { color: var(--text-black-900); text-align: center; font-size: 15px; margin-bottom: 60px; }
 .contact .contact-info-item { flex: 0 0 25%; max-width: 25%; text-align: center; margin-bottom: 60px; }
 .contact .contact-info-item .icon { display: inline-block; }
-.contact .contact-info-item .icon .fa { font-size: 25px; color: var(--skin-color); }
+.contact .contact-info-item .icon .fa,
+.contact .contact-info-item .icon .fa-brands { font-size: 25px; color: var(--skin-color); }
 .contact .contact-info-item h4 { font-size: 18px; font-weight: 700; color: var(--text-black-900); text-transform: capitalize; margin: 15px 0 5px; }
 .contact .contact-info-item p { font-size: 16px; line-height: 1.6; color: var(--text-black-700); font-weight: 400; word-break: break-word; }
 .contact .contact-form { flex: 0 0 100%; max-width: 100%; }
@@ -279,7 +323,7 @@ ul { list-style: none; }
 }
 .contact .contact-form .form-item .form-control:focus {
     border-color: var(--skin-color);
-    box-shadow: 0 0 0 4px hsla(from var(--skin-color) h s l / 0.15); /* Focus glow */
+    box-shadow: 0 0 0 4px hsla(from var(--skin-color) h s l / 0.15);
 }
 .contact .contact-form .form-item textarea.form-control { height: 140px; resize: vertical; padding-top: 15px; border-radius: 20px;}
 .contact .contact-form .btn { height: 50px; padding: 0 50px; }
@@ -295,7 +339,12 @@ ul { list-style: none; }
   70% { transform: scale(1); box-shadow: 0 0 0 10px hsla(from var(--skin-color) h s l / 0); }
   100% { transform: scale(1); box-shadow: 0 0 0 0 hsla(from var(--skin-color) h s l / 0); }
 }
+@keyframes animated-stripes {
+  from { background-position: 40px 0; }
+  to { background-position: 0 0; }
+}
 
+/* Staggered animation for elements within an active section */
 .section.active .container > .row > div { animation: slideUp 0.6s ease-out 0.2s forwards; opacity: 0; }
 .section.active .about-content .row > div,
 .section.active .portfolio-item,
@@ -304,11 +353,22 @@ ul { list-style: none; }
 
 .section.active .padd-15:nth-child(2), .section.active .portfolio-item:nth-child(2) { animation-delay: 0.2s; }
 .section.active .padd-15:nth-child(3), .section.active .portfolio-item:nth-child(3) { animation-delay: 0.3s; }
-.section.active .padd-15:nth-child(4) { animation-delay: 0.4s; }
-.section.active .padd-15:nth-child(5) { animation-delay: 0.5s; }
-.section.active .padd-15:nth-child(6) { animation-delay: 0.6s; }
+.section.active .padd-15:nth-child(4), .section.active .portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+.section.active .padd-15:nth-child(5), .section.active .portfolio-item:nth-child(5) { animation-delay: 0.5s; }
+.section.active .padd-15:nth-child(6), .section.active .portfolio-item:nth-child(6) { animation-delay: 0.6s; }
 
-/* DARK MODE TOGGLE - REPOSITIONED & STYLED */
+
+/* This rule triggers the progress bar animation when the section is active */
+.section.active .about .skill-item .progress-in {
+    width: var(--progress-width);
+}
+.section.active .about .skill-item .skill-percent {
+    opacity: 1;
+}
+
+/* ===================================================
+   DARK MODE TOGGLE - REPOSITIONED & STYLED
+=================================================== */
 .style-switcher { position: fixed; bottom: 20px; right: 20px; z-index: 101; }
 .style-switcher .day-night {
     height: 45px; width: 45px; cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -328,7 +388,7 @@ ul { list-style: none; }
   .aside .nav-toggler { display: flex; left: 30px; }
   .aside .nav-toggler.open { left: 300px; }
   .section { left: 0; }
-  .section.active { display: block; }
+  .section.active { display: block; } 
 }
 @media (max-width: 991px) {
   .contact .contact-info-item, .portfolio .portfolio-item { flex: 0 0 50%; max-width: 50%; }
@@ -340,7 +400,7 @@ ul { list-style: none; }
   .contact .contact-form .col-6, .contact .contact-info-item, .portfolio .portfolio-item, .about .personal-info, .about .skills, .about .info-item {
     flex: 0 0 100%; max-width: 100%;
   }
-  .about .buttons { display: flex; flex-direction: column; gap: 15px; }
-  .about .buttons .btn { width: 100%; text-align: center; margin: 0; }
+  .about .buttons { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+  .about .buttons .btn { width: 100%; max-width: 300px; text-align: center; margin: 0; }
   .section-title h2 { font-size: 36px; }
 }
